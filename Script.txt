@@ -1,0 +1,150 @@
+docker container ... ls
+--------------------------------------------------------------------
+show ports: 
+docker ps
+--------------------------------------------------------------------
+docker image ls / docker images
+--------------------------------------------------------------------
+for run in background: 
+docker run -dit
+--------------------------------------------------------------------
+rename: 
+docker run -dit --name nginx-1 nginx:latest
+--------------------------------------------------------------------
+container haye ezafi pak mishe: 
+docker container prune
+--------------------------------------------------------------------
+show ip : 
+docker container incpect
+--------------------------------------------------------------------
+set dns : 
+docker run --dns 8.8.8.8
+--------------------------------------------------------------------
+env variable : 
+docker run --env MY-OS="linux"
+--------------------------------------------------------------------
+port: 
+docker run --expose 443/tcp (pishfarz tcp)
+--------------------------------------------------------------------
+change hostname: 
+docker run --hostname nginx-3
+--------------------------------------------------------------------
+port forwarding: 
+docker run --publish 8080(host):80(guest)
+--------------------------------------------------------------------
+port forwarding to special ip : 
+docker run -p(--publish) 192.168.10.10:8080(host):80(guest)
+--------------------------------------------------------------------
+if dont have latest or forexample nginx is update:
+docker run --pull always (hamishe pull mikone)
+--------------------------------------------------------------------
+
+restart pollicies container: (default no)
+docker run --restart no/always/unless-stopped/on-failure
+     always -> server restart , docker daemon restart
+     unless-stopped -> server restart
+--------------------------------------------------------------------
+user:
+docker run --user name:group
+--------------------------------------------------------------------
+work inside container:
+docker run --workdir 
+--------------------------------------------------------------------
+enter to container:
+docker exec -it name bash
+--------------------------------------------------------------------
+delete:
+docker rm -f name
+--------------------------------------------------------------------
+update container:
+docker update 
+--------------------------------------------------------------------
+docker top name
+--------------------------------------------------------------------
+docker logs -f name 
+(tail -f)
+--------------------------------------------------------------------
+copy to docker:(host to guest or guest to host)
+docker cp file.txt name:/directory
+--------------------------------------------------------------------
+log haye event haye container:
+docker events
+--------------------------------------------------------------------
+
+docker export
+--------------------------------------------------------------------
+
+docker import 
+--------------------------------------------------------------------
+see history :
+docker history name:tag
+--------------------------------------------------------------------
+config haye docker:
+/etc/docker/daemon.json
+forExample: 
+change location of docker file /var/lib/docker -->
+in /etc/docker/daemon.json add ( "data-root": "/home/new/docker" ) to json file
+
+ya soft link besazim ba ln -n
+--------------------------------------------------------------------
+build:
+docker build -t my-site-next(esme image) .(location of Dockerfile . yani haminja)
+
+
+
+--------------------------------------------------------------------
+show disk:
+fdisk -l
+--------------------------------------------------------------------
+list of open file:
+lsof [directory]
+--------------------------------------------------------------------
+finf UUID disk:
+blkid directory
+--------------------------------------------------------------------
+
+pvs
+pvcreate
+pvdisplay
+
+vgs
+vgcreate
+
+
+lvs
+lvcreate --name [] -L [12G] [(vg name)]
+lvextend (for extend)
+
+
+mkfs -t ext4 /dev/maper/ 
+blkid
+vi /etc/fstab
+mount -a
+df -Th
+
+resize2fs [Address lv]
+
+
+
+--------------------------------------------------------------------
+delete container haye exit shode:
+docker container prune 
+
+delete image haye bedone tag va name:
+docker image prune
+
+delete cashe:
+docker builder prune
+--------------------------------------------------------------------
+export , import --> roye container mizanim
+
+save , load  --> roye image mizanim 
+
+example for server dont have internet:
+image -save-> .tar -load-> image
+--------------------------------------------------------------------
+tabdil container be image:
+docker commit
+--------------------------------------------------------------------
+
+
